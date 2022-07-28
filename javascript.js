@@ -15,7 +15,7 @@ function getComputerChoice() {
 /* Let player type in its choice */
 
 function getPlayerChoice() {
-    let input = prompt("Please Enter your choice: ").toLowerCase();
-    return input;
+    let input = prompt("Please Enter your choice: ");
+    return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase(1);
 }
 
