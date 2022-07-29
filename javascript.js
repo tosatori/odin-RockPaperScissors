@@ -26,3 +26,25 @@ function getPlayerChoice() {
         }
     }    
 
+/**
+ * Check if player and computer have made the same choice.
+ */
+function checkChoice(playerSelection, computerChoice) {
+    return playerSelection === computerChoice ? true : false;
+}
+
+
+/* play one round */
+
+function playRound(playerSelection, computerChoice) {
+
+}
+
+
+let test = getComputerChoice();
+console.log(test);
+
+let test2 =getPlayerChoice();
+console.log(test2);
+
+let test3 = checkChoice(test, test2);
