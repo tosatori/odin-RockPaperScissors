@@ -50,7 +50,13 @@ function checkWinner(playerSelection, computerChoice){
 /* play one round */
 
 function playRound(playerSelection, computerChoice) {
-
+    let plyr = getPlayerChoice();
+    let cmptr = getComputerChoice();
+    if (checkChoice(plyr, cmptr)) {
+        return "tie";
+    } else {
+        return checkWinner(plyr, cmptr);
+    }
 }
 
 
@@ -63,3 +69,5 @@ console.log(test2);
 let test3 = checkChoice(test, test2);
 
 let test4 = checkWinner(test, test2);
+
+let test5 = playRound(test, test2);
