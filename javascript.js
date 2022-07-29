@@ -47,27 +47,46 @@ function checkWinner(playerSelection, computerChoice){
     }
 }
 
-/* play one round */
+/* Play one round. Print the winner on screen. */
 
-function playRound(playerSelection, computerChoice) {
+function playRound() {
     let plyr = getPlayerChoice();
     let cmptr = getComputerChoice();
     if (checkChoice(plyr, cmptr)) {
+        alert("It's a tie. Do it again!")
         return "tie";
     } else {
-        return checkWinner(plyr, cmptr);
+        let winner = checkWinner(plyr, cmptr);
+        if (winner === "player") {
+            alert("You win! " + plyr + " beats " + cmptr + ".");
+            return winner;
+        } else {
+            alert("You loose! " + cmptr + " beats " + plyr + ".");
+            return winner;
+        }
     }
 }
 
+/**
+ *  Play a complete game of 5 rounds, keep track of the results and declare winner after 5 rounds.
+ */
+function game() {
+    let plyr = 0;
+    let cmptr = 0;
+    for (let i = 0; i < 5; i++) {
+       
+        let round = playRound();
+        if (round === "tie") {
+            i--;
+            continue;
+        }
+        round === "player" ? plyr++ : cmptr++;
+    }
+    if (plyr > cmptr) {
+        alert("After five rounds you are the winner! Congratulations!")
+    } else {
+        alert("And once again we Computer beat the human! So long suckers!")
+    }
+}
 
-let test = getComputerChoice();
-console.log(test);
-
-let test2 =getPlayerChoice();
-console.log(test2);
-
-let test3 = checkChoice(test, test2);
-
-let test4 = checkWinner(test, test2);
-
-let test5 = playRound(test, test2);
+game();
