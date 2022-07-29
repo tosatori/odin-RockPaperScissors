@@ -12,10 +12,17 @@ function getComputerChoice() {
     }
 }
 
-/* Let player type in its choice */
+/** Let player type in its choice. Make sure input is valid, if not repeat process. 
+ * Return players choice in all lower case letters */
 
 function getPlayerChoice() {
-    let input = prompt("Please Enter your choice: ");
-    return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase(1);
-}
+    while(true) {
+        let input = prompt("Please Enter your choice: ").toLowerCase();
+            if (input === "rock" || input === "paper" || input === "scissor") {
+                return input;
+            } else {
+                window.alert("Something went wrong. Please make sure to only choose between Rock, Paper and Scissor.");
+                }
+        }
+    }    
 
