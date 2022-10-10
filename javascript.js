@@ -8,7 +8,7 @@ function getComputerChoice() {
         case 2:
             return "paper";
         case 3:
-            return "scissor";
+            return "scissors";
     }
 }
 
@@ -40,7 +40,7 @@ function checkWinner(playerSelection, computerChoice){
     let p = playerSelection;
     let c = computerChoice;
 
-    if (p === "rock" && c === "scissors" || p === "paper" && c === "rock" || p === "scissor" && c === "paper") {
+    if (p === "rock" && c === "scissors" || p === "paper" && c === "rock" || p === "scissors" && c === "paper") {
         return "player";
     } else {
         return "computer";
@@ -49,8 +49,8 @@ function checkWinner(playerSelection, computerChoice){
 
 /* Play one round. Print the winner on screen. */
 
-function playRound() {
-    let plyr = getPlayerChoice();
+function playRound(choice) {
+    let plyr = choice;
     let cmptr = getComputerChoice();
     if (checkChoice(plyr, cmptr)) {
         alert("It's a tie. Do it again!")
@@ -88,5 +88,20 @@ function game() {
         alert("And once again we Computer beat the human! So long suckers!")
     }
 }
+
+/**Add eventlistener to buttons */
+
+const btnScissors = document.querySelector("#btnScissors");
+btnScissors.addEventListener("click", () => {
+    playRound("scissor");
+});
+const btnRock = document.querySelector("#btnRock");
+btnRock.addEventListener("click", () => {
+    playRound("rock");
+});
+const btnPaper = document.querySelector("#btnPaper");
+btnPaper.addEventListener("click", () => {
+    playRound("paper");
+});
 
 game();
