@@ -20,6 +20,27 @@ const game = () => {
          playRound("paper");
      });    
 
+    /** Create  a div for messages, one for playerscore an one for computerscore*/
+
+    const info = document.querySelector("#info");
+
+    const message = document.createElement("div");
+    message.classList.add("info");
+    message.textContent = "Let's play a game!";
+
+    info.appendChild(message);
+    
+    const pScore = document.createElement("div");
+    pScore.classList.add("info");
+    pScore.textContent = `Your Score: ${playerScore}`;
+
+    info.appendChild(pScore);
+
+    const cScore = document.createElement("div");
+    cScore.classList.add("info");
+    cScore.textContent = `Computer Score: ${computerScore}`;
+
+    info.appendChild(cScore);
     /* Computer players choice gets randomly picked */
 
     function getComputerChoice() {
