@@ -1,49 +1,71 @@
-/* Computer players choice gets randomly picked */
+const game = () => {
+    let playerScore = 0;
+    let computerScore = 0;
 
-function getComputerChoice() {
-    let num = Math.floor(Math.random() * 3) + 1;
-    switch (num) {
-        case 1:
-            return "rock";
-        case 2:
-            return "paper";
-        case 3:
-            return "scissors";
+     /** Function to play game */
+     const playGame = () => {
+
+     /**Add eventlistener to buttons */
+
+     const btnScissors = document.querySelector("#btnScissors");
+     btnScissors.addEventListener("click", () => {
+         playRound("scissors");
+     });
+     const btnRock = document.querySelector("#btnRock");
+     btnRock.addEventListener("click", () => {
+         playRound("rock");
+     });
+     const btnPaper = document.querySelector("#btnPaper");
+     btnPaper.addEventListener("click", () => {
+         playRound("paper");
+     });    
+
+    /* Computer players choice gets randomly picked */
+
+    function getComputerChoice() {
+        let num = Math.floor(Math.random() * 3) + 1;
+        switch (num) {
+            case 1:
+                return "rock";
+            case 2:
+                return "paper";
+            case 3:
+                return "scissors";
+        }
     }
-}
 
 
-/**
- * Check if player and computer have made the same choice. If so return true.
- */
-function checkChoice(playerSelection, computerChoice) {
-    return playerSelection === computerChoice ? true : false;
-}
-
-/**
- * Check who is the winner and return result.
- */
-function checkWinner(playerSelection, computerChoice){
-    let p = playerSelection;
-    let c = computerChoice;
-
-    if (p === "rock" && c === "scissors" || p === "paper" && c === "rock" || p === "scissors" && c === "paper") {
-        return "player";
-    } else {
-        return "computer";
+    /**
+    * Check if player and computer have made the same choice. If so return true.
+    */
+    function checkChoice(playerSelection, computerChoice) {
+        return playerSelection === computerChoice ? true : false;
     }
-}
 
-/* Play one round. Print the winner on screen. */
+    /**
+    * Check who is the winner and return result.
+    */
+    function checkWinner(playerSelection, computerChoice){
+        let p = playerSelection;
+        let c = computerChoice;
 
-function playRound(choice) {
-    let plyr = choice;
-    let cmptr = getComputerChoice();
-    if (checkChoice(plyr, cmptr)) {
-        alert("It's a tie. Do it again!")
-        return "tie";
-    } else {
-        let winner = checkWinner(plyr, cmptr);
+        if (p === "rock" && c === "scissors" || p === "paper" && c === "rock" || p === "scissors" && c === "paper") {
+            return "player";
+        } else {
+            return "computer";
+        }
+    }   
+
+    /* Play one round. Print the winner on screen. */
+
+    function playRound(choice) {
+        let plyr = choice;
+        let cmptr = getComputerChoice();
+        if (checkChoice(plyr, cmptr)) {
+            alert("It's a tie. Do it again!")
+            return "tie";
+        } else {
+            let winner = checkWinner(plyr, cmptr);
         if (winner === "player") {
             alert("You win! " + plyr + " beats " + cmptr + ".");
             return winner;
@@ -51,22 +73,16 @@ function playRound(choice) {
             alert("You loose! " + cmptr + " beats " + plyr + ".");
             return winner;
         }
+        }
     }
+
+   
+    
+    }
+ 
+    // Calling playGame function inside game
+    playGame(); 
 }
-
-/**Add eventlistener to buttons */
-
-const btnScissors = document.querySelector("#btnScissors");
-btnScissors.addEventListener("click", () => {
-    playRound("scissor");
-});
-const btnRock = document.querySelector("#btnRock");
-btnRock.addEventListener("click", () => {
-    playRound("rock");
-});
-const btnPaper = document.querySelector("#btnPaper");
-btnPaper.addEventListener("click", () => {
-    playRound("paper");
-});
-
+ 
+// Calling the game function
 game();
