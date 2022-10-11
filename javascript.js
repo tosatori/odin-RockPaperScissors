@@ -54,28 +54,6 @@ function playRound(choice) {
     }
 }
 
-/**
- *  Play a complete game of 5 rounds, keep track of the results and declare winner after 5 rounds.
- */
-function game() {
-    let plyr = 0;
-    let cmptr = 0;
-    for (let i = 0; i < 5; i++) {
-       
-        let round = playRound();
-        if (round === "tie") {
-            i--;
-            continue;
-        }
-        round === "player" ? plyr++ : cmptr++;
-    }
-    if (plyr > cmptr) {
-        alert("After five rounds you are the winner! Congratulations!")
-    } else {
-        alert("And once again we Computer beat the human! So long suckers!")
-    }
-}
-
 /**Add eventlistener to buttons */
 
 const btnScissors = document.querySelector("#btnScissors");
