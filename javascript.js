@@ -41,6 +41,33 @@ const game = () => {
     cScore.textContent = `Computer Score: ${computerScore}`;
 
     info.appendChild(cScore);
+
+    /* Play one round. Print the winner on screen. */
+
+    function playRound(choice) {
+        let plyr = choice;
+        let cmptr = getComputerChoice();
+        if (checkChoice(plyr, cmptr)) {
+            message.textContent = "It's a tie. Do it again!";
+            return;
+        } else {
+        let winner = checkWinner(plyr, cmptr);
+        if (winner === "player") {
+            message.textContent = "You win! " + plyr + " beats " + cmptr + ".";
+            playerScore++;
+            pScore.textContent = `Your Score: ${playerScore}`;
+            win();
+            return;
+        } else {
+            message.textContent = "You loose! " + cmptr + " beats " + plyr + ".";
+            computerScore++;
+            cScore.textContent = `Computer Score: ${computerScore}`;
+            win();
+            return;
+        }
+        }
+    }
+
     /* Computer players choice gets randomly picked */
 
     function getComputerChoice() {
@@ -77,25 +104,7 @@ const game = () => {
         }
     }   
 
-    /* Play one round. Print the winner on screen. */
-
-    function playRound(choice) {
-        let plyr = choice;
-        let cmptr = getComputerChoice();
-        if (checkChoice(plyr, cmptr)) {
-            alert("It's a tie. Do it again!")
-            return "tie";
-        } else {
-            let winner = checkWinner(plyr, cmptr);
-        if (winner === "player") {
-            alert("You win! " + plyr + " beats " + cmptr + ".");
-            return winner;
-        } else {
-            alert("You loose! " + cmptr + " beats " + plyr + ".");
-            return winner;
-        }
-        }
-    }
+    
 
    
     
