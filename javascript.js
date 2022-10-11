@@ -111,11 +111,17 @@ const game = () => {
         } else if (computerScore === 5) {
             message.textContent = "And once again we Computer beat the human! So long suckers!";
             clean();
-        }    
+        }
+    }    
+    /** After a winner is found, remove all buttons and the running score */
     
-
-   
-    
+    function clean() {
+        btnPaper.remove();
+        btnRock.remove();
+        btnScissors.remove();
+        pScore.remove();
+        cScore.remove();
+    }
     }
  
     // Calling playGame function inside game
