@@ -103,7 +103,15 @@ const game = () => {
             return "computer";
         }
     }   
-
+    /** Check if one of the players has reached a score of 5 wins */
+    function win() {
+        if (playerScore === 5) {
+            message.textContent = "You are the winner! Congratulations!";
+            clean();
+        } else if (computerScore === 5) {
+            message.textContent = "And once again we Computer beat the human! So long suckers!";
+            clean();
+        }    
     
 
    
